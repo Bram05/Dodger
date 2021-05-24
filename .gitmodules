@@ -1,0 +1,3 @@
+[submodule "Dodger/vendor/glfw"]
+	path = Dodger/vendor/glfw
+	url = git@github.com:Bram05/glfw.git

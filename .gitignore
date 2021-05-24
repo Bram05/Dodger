@@ -1,0 +1,13 @@
+bin
+bin-int
+
+# codelite stuff
+.codelite
+Dodger.workspace
+Makefile
+Dodger/Dodger.mk
+Dodger/Dodger.project
+Dodger/Dodger.txt
+
+# Codelite ?
+.build-debug 
