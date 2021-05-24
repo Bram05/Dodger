@@ -2,6 +2,7 @@ workspace "Dodger"
 	configurations { "Debug", "Release" }
 
 include "Dodger/vendor/glfw"
+include "Dodger/vendor/glad"
 
 project "Dodger"
 	location "Dodger"
@@ -17,9 +18,10 @@ project "Dodger"
 		"dl",
 		"X11",
 		"pthread",
-		"GL"
+		"GL",
+		"glad"
  	}
-	includedirs { "vendor/glfw/include" }
+	includedirs { "%{prj.location}/vendor/glfw/include", "%{prj.location}/vendor/glad/include" }
 
 	filter "configurations:Debug"
 		defines { "DEBUG" }

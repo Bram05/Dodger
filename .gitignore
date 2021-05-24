@@ -5,9 +5,9 @@ bin-int
 .codelite
 Dodger.workspace
 Makefile
-Dodger/Dodger.mk
-Dodger/Dodger.project
-Dodger/Dodger.txt
+*.mk
+*.project
+*.txt
 
 # Codelite ?
 .build-debug 
