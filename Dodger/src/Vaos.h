@@ -16,9 +16,9 @@ public:
 	
 private:
 	unsigned int m_Vao{};
-	std::shared_ptr<Shader> m_Shader;
-	std::shared_ptr<VertexBuffer> m_Vbo;
-	std::shared_ptr<IndexBuffer> m_Ibo;
+	std::shared_ptr<Shader> m_Shader{};
+	std::shared_ptr<VertexBuffer> m_Vbo{};
+	std::shared_ptr<IndexBuffer> m_Ibo{};
 };
 
 

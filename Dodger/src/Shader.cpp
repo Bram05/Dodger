@@ -81,7 +81,7 @@ void Shader::CreateProgram(const std::string& vertexShaderSource, const std::str
 	{
 		int logLength;
 		glGetProgramiv(m_Shader, GL_INFO_LOG_LENGTH, &logLength);
-		std::vector<char> infoLog(logLength);
+		std::vector<char> infoLog(static_cast<unsigned int>(logLength));
 		glGetProgramInfoLog(m_Shader, logLength, nullptr, infoLog.data());
 		
 		std::cerr << "Shader linking failed!\n" << infoLog.data() << '\n';
@@ -107,7 +107,7 @@ unsigned int Shader::CreateShader(const std::string& shaderSource, unsigned int 
 	{
 		int logLength;
 		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &logLength);
-		std::vector<char> infoLog(logLength);
+		std::vector<char> infoLog(static_cast<unsigned int>(logLength));
 		glGetShaderInfoLog(shader, logLength, nullptr, infoLog.data());
 		
 		std::cerr << "Shader compilation failed!\n" << infoLog.data() << '\n';

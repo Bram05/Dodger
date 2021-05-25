@@ -21,7 +21,11 @@ project "Dodger"
 		"GL",
 		"glad"
  	}
-	includedirs { "%{prj.location}/vendor/glfw/include", "%{prj.location}/vendor/glad/include", "%{prj.location}/vendor/glm/" }
+	sysincludedirs { "%{prj.location}/vendor/glfw/include", "%{prj.location}/vendor/glad/include", "%{prj.location}/vendor/glm/" }
+    warnings "Extra"
+
+    filter "system:linux"
+        buildoptions { "-Weffc++", "-Wsign-conversion" } -- Even more warnings
 
 	filter "configurations:Debug"
 		defines { "DEBUG" }

@@ -20,7 +20,7 @@ public:
 	Shader& operator=(const Shader&) = delete;
 	
 private:
-	unsigned int m_Shader;
+	unsigned int m_Shader{};
 	mutable std::map<std::string, int> m_UniformLocations{};
 private:
 	void CreateProgram(const std::string& vertexShader, const std::string& fragmentShader);

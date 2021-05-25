@@ -30,6 +30,6 @@ void EnemyVao::Render(float x, float y)
 	m_Shader->Bind();	// Binding this for every enemy is unnecesary
 	glm::mat4 model = glm::translate(glm::mat4(1.0f), {x, y, 0.0f});
 	m_Shader->SetUniform("u_Model", glm::scale(model, glm::vec3(0.1f)));
-	glDrawElements(GL_TRIANGLES, m_Ibo->GetCount(), GL_UNSIGNED_INT, nullptr);
+	glDrawElements(GL_TRIANGLES, static_cast<int>(m_Ibo->GetCount()), GL_UNSIGNED_INT, nullptr);
 }
 
