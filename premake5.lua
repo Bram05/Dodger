@@ -21,7 +21,7 @@ project "Dodger"
 		"GL",
 		"glad"
  	}
-	includedirs { "%{prj.location}/vendor/glfw/include", "%{prj.location}/vendor/glad/include" }
+	includedirs { "%{prj.location}/vendor/glfw/include", "%{prj.location}/vendor/glad/include", "%{prj.location}/vendor/glm/" }
 
 	filter "configurations:Debug"
 		defines { "DEBUG" }
