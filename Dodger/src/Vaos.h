@@ -6,11 +6,11 @@
 #include "Buffers.h"
 #include "Shader.h"
 
-class EnemyVao
+class SquareVao
 {
 public:
-	EnemyVao();
-	~EnemyVao() {};
+	SquareVao();
+	~SquareVao() {};
 	
 	void Render(float x, float y);
 	

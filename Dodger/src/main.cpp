@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "Enemy.h"
+#include "Player.h"
 
 GLFWwindow* CreateWindow()
 {
@@ -37,8 +38,9 @@ int main()
 	Enemy* enemies[5];
 	for (int i{0}; i < 5; ++i)
 	{
-		enemies[i] = new Enemy(i*0.2f - 0.5f, 1.0f);
+		enemies[i] = new NormalEnemy(i*0.2f - 0.5f, 1.0f);
 	}
+	Player player(0.0f, 0.0f);
 	
 	while (!glfwWindowShouldClose(window))
 	{
@@ -50,6 +52,8 @@ int main()
 			enemies[i]->Render();
 			enemies[i]->Update();
 		}
+		player.Update(window);
+		player.Render();
 		
 		glfwSwapBuffers(window);
 		glfwPollEvents();

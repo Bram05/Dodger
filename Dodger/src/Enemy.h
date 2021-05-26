@@ -8,9 +8,25 @@ class Enemy
 public:
 	Enemy(float x, float y)
 		: m_X{x}, m_Y{y}
+	{}
+	
+	virtual ~Enemy() {}
+	
+	virtual void Update() = 0;
+	virtual void Render() = 0;
+	
+protected:
+	float m_X, m_Y;
+};
+
+class NormalEnemy : public Enemy
+{
+public:
+	NormalEnemy(float x, float y)
+		: Enemy(x, y)
 	{
 		if (!s_Vao.get())
-			s_Vao = std::make_shared<EnemyVao>();
+			s_Vao = std::make_shared<SquareVao>();
 	}
 	
 	void Update()
@@ -24,10 +40,8 @@ public:
 	}
 	
 private:
-	float m_X, m_Y;
+	static std::shared_ptr<SquareVao> s_Vao;
 	static float m_Speed;
-	
-	static std::shared_ptr<EnemyVao> s_Vao;
 };
 
 #endif // ENEMY_H

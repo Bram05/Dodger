@@ -1,4 +1,4 @@
 #include "Enemy.h"
 
-std::shared_ptr<EnemyVao> Enemy::s_Vao;
-float Enemy::m_Speed{0.005f};
+std::shared_ptr<SquareVao> NormalEnemy::s_Vao;
+float NormalEnemy::m_Speed{0.005f};
