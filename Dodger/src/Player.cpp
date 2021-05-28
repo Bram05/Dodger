@@ -3,7 +3,7 @@
 static constexpr float g_PlayerSpeed{0.01f};
 
 Player::Player(float x, float y)
-	: m_X{x}, m_Y{y}, m_Vao{std::make_shared<SquareVao>()}
+	: m_X{x}, m_Y{y}, m_Vao{std::make_shared<SquareVao>("res/textures/spaceship.png")}
 {
 }
 
@@ -13,7 +13,7 @@ Player::~Player()
 
 void Player::Render()
 {
-	m_Vao->Render(m_X, m_Y);
+	m_Vao->Render(m_X, m_Y, 0.0f);
 }
 
 void Player::Update(GLFWwindow* window)

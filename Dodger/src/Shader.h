@@ -15,6 +15,7 @@ public:
 	void UnBind() const;
 	
 	void SetUniform(const std::string& name, const glm::mat4& mat);
+	void SetUniform(const std::string& name, int val);
 	
 	Shader(const Shader&) = delete;
 	Shader& operator=(const Shader&) = delete;

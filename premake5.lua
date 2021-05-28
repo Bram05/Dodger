@@ -3,6 +3,7 @@ workspace "Dodger"
 
 include "Dodger/vendor/glfw"
 include "Dodger/vendor/glad"
+include "Dodger/vendor/stb_image"
 
 project "Dodger"
 	location "Dodger"
@@ -19,9 +20,10 @@ project "Dodger"
 		"X11",
 		"pthread",
 		"GL",
-		"glad"
+		"glad",
+        "stb_image"
  	}
-	sysincludedirs { "%{prj.location}/vendor/glfw/include", "%{prj.location}/vendor/glad/include", "%{prj.location}/vendor/glm/" }
+	sysincludedirs { "%{prj.location}/vendor/glfw/include", "%{prj.location}/vendor/glad/include", "%{prj.location}/vendor/glm/", "%{prj.location}/vendor" }
     warnings "Extra"
 
     filter "system:linux"

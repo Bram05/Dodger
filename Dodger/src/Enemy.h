@@ -26,17 +26,18 @@ public:
 		: Enemy(x, y)
 	{
 		if (!s_Vao.get())
-			s_Vao = std::make_shared<SquareVao>();
+			s_Vao = std::make_shared<SquareVao>("res/textures/enemy.png");
 	}
 	
 	void Update()
 	{
-		m_Y -= m_Speed;
+		if (m_Y > 0.3f)
+			m_Y -= m_Speed;
 	}
 	
 	void Render()
 	{
-		s_Vao->Render(m_X, m_Y);
+		s_Vao->Render(m_X, m_Y, 180.0f);
 	}
 	
 private:
