@@ -18,6 +18,5 @@ void NormalEnemy::Render() const
 
 void NormalEnemy::Update()
 {
-	if (m_Position.y > 0.3f)
-		m_Position.y -= m_Speed;
+	m_Position.y -= m_Speed;
 }

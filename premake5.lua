@@ -24,6 +24,7 @@ project "Dodger"
         "stb_image"
  	}
 	sysincludedirs { "%{prj.location}/vendor/glfw/include", "%{prj.location}/vendor/glad/include", "%{prj.location}/vendor/glm/", "%{prj.location}/vendor" }
+    cppdialect "c++17"
     warnings "Extra"
 
     filter "system:linux"

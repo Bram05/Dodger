@@ -7,8 +7,9 @@
 
 #include "Enemy.h"
 #include "Player.h"
+#include "Utils.h"
 
-GLFWwindow* CreateWindow()
+GLFWwindow* SetupContext()
 {
 	if (!glfwInit())
 	{
@@ -23,6 +24,14 @@ GLFWwindow* CreateWindow()
 		std::exit(EXIT_FAILURE);
 	}
 	glfwMakeContextCurrent(window);
+	
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	{
+		std::cerr << "Glad failed to initialize!\n";
+		std::exit(EXIT_FAILURE);
+	}
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
 	return window;
 }
 
@@ -43,25 +52,12 @@ bool CheckCollisions(const Player& player, const std::vector<Enemy*>& enemies)
 	return false;
 }
 
-int main()
-{	
-	GLFWwindow* window{CreateWindow()};
-	
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-	{
-		std::cerr << "Glad failed to initialize!\n";
-		return EXIT_FAILURE;
-	}
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glEnable(GL_BLEND);
-	
+unsigned int PlayGame(GLFWwindow* window)
+{
 	Player player({ 0.5f, 0.1f });
-	std::vector<Enemy*> enemies(5);
-	for (unsigned int i{0}; i < 5; ++i)
-	{
-		enemies[i] = new NormalEnemy(glm::vec2(i*0.2f, 1.0f));
-	}
+	std::vector<Enemy*> enemies;
 	
+	unsigned int i{0};
 	while (!glfwWindowShouldClose(window))
 	{
 		glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
@@ -76,9 +72,21 @@ int main()
 		}
 		
 		if (CheckCollisions(player, enemies))
-			std::cout << "Colliding!\n";
+			return i;
+		
+		if (i % 100 == 0)
+			enemies.push_back(new NormalEnemy({Utils::GenerateRandom(), 1.0f}));
+		++i;
 		
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+	return i;
+}
+
+int main()
+{
+	GLFWwindow* window{SetupContext()};
+	std::cout << "You died!\nYour score is " << PlayGame(window) << '\n';
+	
 }
