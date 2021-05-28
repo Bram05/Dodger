@@ -15,7 +15,7 @@ public:
 	SquareVao(const std::string& texturepath);
 	~SquareVao() {};
 	
-	void Render(const glm::vec2& position, float rotation);
+	void Render(const glm::vec2& centre, const glm::vec2& size, float rotation);
 	
 private:
 	unsigned int m_Vao{};

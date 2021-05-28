@@ -26,6 +26,23 @@ GLFWwindow* CreateWindow()
 	return window;
 }
 
+// Returns true if player collides with an enemy
+bool CheckCollisions(const Player& player, const std::vector<Enemy*>& enemies)
+{
+	for (const Enemy* enemy : enemies)
+	{
+		// Check if they collide on x axis
+		// (distance between the objects on x axis) - (size of enemy) - (size of player) < 0
+		if (glm::abs(enemy->GetPosition().x - player.GetPosition().x) - (enemy->GetSize()/2) - (player.GetSize()/2) < 0)
+		{
+			// Check if they collide on y axis in the same way
+			if (glm::abs(enemy->GetPosition().y - player.GetPosition().y) - (enemy->GetSize()/2) - (player.GetSize()/2) < 0)
+				return true;
+		}
+	}
+	return false;
+}
+
 int main()
 {	
 	GLFWwindow* window{CreateWindow()};
@@ -39,8 +56,8 @@ int main()
 	glEnable(GL_BLEND);
 	
 	Player player({ 0.5f, 0.1f });
-	Enemy* enemies[5];
-	for (int i{0}; i < 5; ++i)
+	std::vector<Enemy*> enemies(5);
+	for (unsigned int i{0}; i < 5; ++i)
 	{
 		enemies[i] = new NormalEnemy(glm::vec2(i*0.2f, 1.0f));
 	}
@@ -52,18 +69,16 @@ int main()
 		
 		player.Render();
 		player.Update(window);
-		for (int i{0}; i < 5; ++i)
+		for (Enemy* enemy : enemies)
 		{
-			enemies[i]->Render();
-			enemies[i]->Update();
+			enemy->Render();
+			enemy->Update();
 		}
+		
+		if (CheckCollisions(player, enemies))
+			std::cout << "Colliding!\n";
 		
 		glfwSwapBuffers(window);
 		glfwPollEvents();
-	}
-	
-	for (int i{0}; i < 5; ++i)
-	{
-		delete enemies[i];
 	}
 }

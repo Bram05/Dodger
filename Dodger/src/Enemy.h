@@ -17,6 +17,9 @@ public:
 	virtual void Update() = 0;
 	virtual void Render() const = 0;
 	
+	const glm::vec2 GetPosition() const { return m_Position; }
+	virtual float GetSize() const = 0;
+	
 protected:
 	glm::vec2 m_Position;
 };
@@ -29,9 +32,12 @@ public:
 	void Update() override;
 	void Render() const override;
 	
+	float GetSize() const override { return s_Size; }
+	
 private:
 	static std::shared_ptr<SquareVao> s_Vao;
 	static float m_Speed;
+	static float s_Size;
 };
 
 #endif // ENEMY_H

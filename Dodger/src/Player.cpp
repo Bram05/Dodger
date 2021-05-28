@@ -13,7 +13,7 @@ Player::~Player()
 
 void Player::Render()
 {
-	m_Vao->Render(m_Position, 0.0f);
+	m_Vao->Render(m_Position, {m_Size, m_Size}, 0.0f);
 }
 
 void Player::Update(GLFWwindow* window)
@@ -22,4 +22,9 @@ void Player::Update(GLFWwindow* window)
 		m_Position.x -= g_PlayerSpeed;
 	else if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
 		m_Position.x += g_PlayerSpeed;
+		
+	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+		m_Position.y += g_PlayerSpeed;
+	else if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+		m_Position.y -= g_PlayerSpeed;
 }
