@@ -2,8 +2,8 @@
 
 static constexpr float g_PlayerSpeed{0.01f};
 
-Player::Player(float x, float y)
-	: m_X{x}, m_Y{y}, m_Vao{std::make_shared<SquareVao>("res/textures/spaceship.png")}
+Player::Player(const glm::vec2& position)
+	: m_Position{position}, m_Vao{std::make_shared<SquareVao>("res/textures/spaceship.png")}
 {
 }
 
@@ -13,13 +13,13 @@ Player::~Player()
 
 void Player::Render()
 {
-	m_Vao->Render(m_X, m_Y, 0.0f);
+	m_Vao->Render(m_Position, 0.0f);
 }
 
 void Player::Update(GLFWwindow* window)
 {
 	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
-		m_X -= g_PlayerSpeed;
+		m_Position.x -= g_PlayerSpeed;
 	else if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
-		m_X += g_PlayerSpeed;
+		m_Position.x += g_PlayerSpeed;
 }

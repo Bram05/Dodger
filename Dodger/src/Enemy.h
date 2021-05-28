@@ -1,44 +1,33 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
+#include <glm/glm.hpp>
+
 #include "Vaos.h"
 
 class Enemy
 {
 public:
-	Enemy(float x, float y)
-		: m_X{x}, m_Y{y}
+	Enemy(const glm::vec2& position)
+		: m_Position{position}
 	{}
 	
 	virtual ~Enemy() {}
 	
 	virtual void Update() = 0;
-	virtual void Render() = 0;
+	virtual void Render() const = 0;
 	
 protected:
-	float m_X, m_Y;
+	glm::vec2 m_Position;
 };
 
 class NormalEnemy : public Enemy
 {
 public:
-	NormalEnemy(float x, float y)
-		: Enemy(x, y)
-	{
-		if (!s_Vao.get())
-			s_Vao = std::make_shared<SquareVao>("res/textures/enemy.png");
-	}
+	NormalEnemy(const glm::vec2& position);
 	
-	void Update()
-	{
-		if (m_Y > 0.3f)
-			m_Y -= m_Speed;
-	}
-	
-	void Render()
-	{
-		s_Vao->Render(m_X, m_Y, 180.0f);
-	}
+	void Update() override;
+	void Render() const override;
 	
 private:
 	static std::shared_ptr<SquareVao> s_Vao;

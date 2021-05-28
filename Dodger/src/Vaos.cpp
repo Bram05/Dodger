@@ -29,11 +29,11 @@ SquareVao::SquareVao(const std::string& texturepath)
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (int*)(3*sizeof(float)));
 }
 
-void SquareVao::Render(float x, float y, float angle)
+void SquareVao::Render(const glm::vec2& position, float angle)
 {
 	m_Shader->Bind();	// Binding this for every enemy is unnecesary
 	glm::mat4 view = glm::ortho(0.0f, 1.0f, 0.0f, 1.0f);
-	glm::mat4 model = glm::translate(glm::mat4(1.0f), {x, y, 0.0f});
+	glm::mat4 model = glm::translate(glm::mat4(1.0f), {position, 0.0f});
 	model = glm::scale(model, glm::vec3(0.1f));
 	model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 0.0f, 1.0f));
 	m_Shader->SetUniform("u_VM", view * model);

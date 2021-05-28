@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <string>
+#include <glm/glm.hpp>
 
 #include "Buffers.h"
 #include "Shader.h"
@@ -14,7 +15,7 @@ public:
 	SquareVao(const std::string& texturepath);
 	~SquareVao() {};
 	
-	void Render(float x, float y, float rotation);
+	void Render(const glm::vec2& position, float rotation);
 	
 private:
 	unsigned int m_Vao{};

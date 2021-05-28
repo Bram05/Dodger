@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <memory>
+#include <vector>
 
 #include "Enemy.h"
 #include "Player.h"
@@ -37,11 +38,11 @@ int main()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_BLEND);
 	
-	Player player(0.5f, 0.1f);
+	Player player({ 0.5f, 0.1f });
 	Enemy* enemies[5];
 	for (int i{0}; i < 5; ++i)
 	{
-		enemies[i] = new NormalEnemy(i*0.2f, 1.0f);
+		enemies[i] = new NormalEnemy(glm::vec2(i*0.2f, 1.0f));
 	}
 	
 	while (!glfwWindowShouldClose(window))
