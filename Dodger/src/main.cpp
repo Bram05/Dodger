@@ -4,6 +4,7 @@
 #include <iostream>
 #include <memory>
 #include <vector>
+#include <algorithm>
 
 #include "Enemy.h"
 #include "Player.h"
@@ -70,6 +71,10 @@ unsigned int PlayGame(GLFWwindow* window)
 			enemy->Render();
 			enemy->Update();
 		}
+		
+		enemies.erase(std::remove_if(enemies.begin(), enemies.end(), [](const Enemy* enemy){
+			return (enemy->GetPosition().y < 0.0f);
+		}), enemies.end());
 		
 		if (IsColliding(player, enemies))
 			return i;
