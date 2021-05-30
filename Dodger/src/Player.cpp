@@ -27,4 +27,10 @@ void Player::Update(GLFWwindow* window)
 		m_Position.y += g_PlayerSpeed;
 	else if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
 		m_Position.y -= g_PlayerSpeed;
+		
+	if (m_Position.x > 1.0f) m_Position.x = 1.0f;
+	if (m_Position.x < 0.0f) m_Position.x = 0.0f;
+	
+	if (m_Position.y > 1.0f) m_Position.y = 1.0f;
+	if (m_Position.y < 0.0f) m_Position.y = 0.0f;
 }

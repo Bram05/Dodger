@@ -36,7 +36,7 @@ GLFWwindow* SetupContext()
 }
 
 // Returns true if player collides with an enemy
-bool CheckCollisions(const Player& player, const std::vector<Enemy*>& enemies)
+bool IsColliding(const Player& player, const std::vector<Enemy*>& enemies)
 {
 	for (const Enemy* enemy : enemies)
 	{
@@ -71,7 +71,7 @@ unsigned int PlayGame(GLFWwindow* window)
 			enemy->Update();
 		}
 		
-		if (CheckCollisions(player, enemies))
+		if (IsColliding(player, enemies))
 			return i;
 		
 		if (i % 100 == 0)
