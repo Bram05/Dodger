@@ -12,8 +12,8 @@ public:
 	Player(const glm::vec2& position);
 	~Player();
 	
-	void Update(GLFWwindow* window);
-	void Render();
+	void Update(GLFWwindow* window, float framTime);
+	void Render() const;
 	
 	const glm::vec2 GetPosition() const { return m_Position;; }
 	float GetSize() const { return m_Size; }

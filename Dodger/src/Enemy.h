@@ -14,7 +14,7 @@ public:
 	
 	virtual ~Enemy() {}
 	
-	virtual void Update() = 0;
+	virtual void Update(float frameTime) = 0;
 	virtual void Render() const = 0;
 	
 	const glm::vec2 GetPosition() const { return m_Position; }
@@ -29,7 +29,7 @@ class NormalEnemy : public Enemy
 public:
 	NormalEnemy(const glm::vec2& position);
 	
-	void Update() override;
+	void Update(float frameTime) override;
 	void Render() const override;
 	
 	float GetSize() const override { return s_Size; }

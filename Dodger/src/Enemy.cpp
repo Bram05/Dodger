@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
 std::shared_ptr<SquareVao> NormalEnemy::s_Vao;
-float NormalEnemy::m_Speed{0.005f};
+float NormalEnemy::m_Speed{0.25f};
 float NormalEnemy::s_Size{0.1f};
 
 NormalEnemy::NormalEnemy(const glm::vec2& position)
@@ -16,7 +16,7 @@ void NormalEnemy::Render() const
 	s_Vao->Render(m_Position, {s_Size, s_Size}, 180.0f);
 }
 
-void NormalEnemy::Update()
+void NormalEnemy::Update(float frameTime)
 {
-	m_Position.y -= m_Speed;
+	m_Position.y -= m_Speed * frameTime;
 }
