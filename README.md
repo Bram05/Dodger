@@ -15,11 +15,11 @@ To build this project you need a Linux machine, the codelite IDE and a c++17 min
 3. Open the project files in codelite
 4. Compile and run the project from within codelite
 
-## Dependencies
+## Internal Dependencies
 This project uses:
   - Premake for creating the project files to open the code in an IDE
   - GLFW for creating a window and creating an opengl context
   - GLAD to load all the opengl functions
   - GLM for transformations
   - Stb_image for loading textures
-These are all included in the project and 
+These are all included in the project and will be build automatically
