@@ -20,7 +20,7 @@ public:
 
 private:
 	glm::vec2 m_Position;
-	float m_Size{0.1f};
+	float m_Size{0.05f};
 	std::shared_ptr<SquareVao> m_Vao;
 };
 

@@ -2,7 +2,7 @@
 
 std::shared_ptr<SquareVao> NormalEnemy::s_Vao;
 float NormalEnemy::m_Speed{0.25f};
-float NormalEnemy::s_Size{0.1f};
+float NormalEnemy::s_Size{0.05f};
 
 NormalEnemy::NormalEnemy(const glm::vec2& position)
 	: Enemy(position)

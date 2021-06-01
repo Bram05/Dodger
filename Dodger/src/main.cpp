@@ -27,6 +27,9 @@ GLFWwindow* SetupContext()
 		std::exit(EXIT_FAILURE);
 	}
 	glfwMakeContextCurrent(window);
+	glfwSetFramebufferSizeCallback(window, [](GLFWwindow*, int width, int height) {
+		glViewport(0, 0, width, height);
+	});
 	
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
