@@ -17,9 +17,9 @@ To build this project you need a Linux machine, the codelite IDE and a c++17 min
 
 ## Internal Dependencies
 This project uses:
-  - Premake for creating the project files to open the code in an IDE
-  - GLFW for creating a window and creating an opengl context
-  - GLAD to load all the opengl functions
-  - GLM for transformations
-  - Stb_image for loading textures
+  - [Premake](https://github.com/premake/premake-core "Premake github") for creating the project files to open the code in an IDE
+  - [GLFW](https://www.glfw.org/ "GLFW") for creating a window and creating an opengl context
+  - [GLAD](https://github.com/Dav1dde/glad "GLAD github") to load all the opengl functions
+  - [GLM](https://glm.g-truc.net/0.9.9/index.html "GLM") for transformations
+  - [Stb_image](https://github.com/nothings/stb "stb github") for loading textures
 These are all included in the project and will be build automatically
