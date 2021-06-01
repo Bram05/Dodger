@@ -22,4 +22,5 @@ This project uses:
   - [GLAD](https://github.com/Dav1dde/glad "GLAD github") to load all the opengl functions
   - [GLM](https://glm.g-truc.net/0.9.9/index.html "GLM") for transformations
   - [Stb_image](https://github.com/nothings/stb "stb github") for loading textures
+  
 These are all included in the project and will be build automatically
